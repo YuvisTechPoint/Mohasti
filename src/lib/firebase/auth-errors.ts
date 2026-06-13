@@ -23,8 +23,8 @@ export function formatAuthError(error: unknown): string {
       return "Invalid email or password.";
     case "auth/too-many-requests":
       return "Too many attempts. Please wait a moment and try again.";
-    case "auth/network-request-failed":
-      return "Network error. Check your connection and try again.";
+    case "auth/unauthorized-domain":
+      return "Sign-in is not enabled for this website yet. The site owner must add this domain in Firebase Console → Authentication → Settings → Authorized domains (e.g. mohasti.vercel.app).";
     default:
       return error instanceof Error
         ? error.message
