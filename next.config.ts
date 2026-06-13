@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  turbopack: {},
+  serverExternalPackages: ["firebase-admin", "razorpay"],
   images: {
     remotePatterns: [
       {

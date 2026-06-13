@@ -46,13 +46,29 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 
 export { AuthContext };
 
-async function syncSession(idToken: string): Promise<boolean> {
+async function syncSession(idToken: string): Promise<{ ok: boolean; message?: string }> {
   const res = await fetch("/api/auth/session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ idToken }),
   });
-  return res.ok;
+  if (res.ok) return { ok: true };
+
+  let message = "Could not establish session. Please try again.";
+  try {
+    const data = (await res.json()) as { error?: string; detail?: string };
+    if (res.status === 503 && data.error) {
+      message =
+        data.detail
+          ? `${data.error} (${data.detail})`
+          : data.error;
+    } else if (data.error) {
+      message = data.error;
+    }
+  } catch {
+    // ignore JSON parse errors
+  }
+  return { ok: false, message };
 }
 
 function mapUser(user: User): AuthUser {
@@ -67,9 +83,9 @@ function mapUser(user: User): AuthUser {
 async function establishSession(auth: Auth, firebaseUser: User): Promise<void> {
   const token = await firebaseUser.getIdToken();
   const synced = await syncSession(token);
-  if (!synced) {
+  if (!synced.ok) {
     await signOut(auth);
-    throw new Error("Could not establish session. Please try again.");
+    throw new Error(synced.message ?? "Could not establish session. Please try again.");
   }
 }
 
@@ -88,7 +104,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (firebaseUser) {
         const token = await firebaseUser.getIdToken();
         const synced = await syncSession(token);
-        if (synced) {
+        if (synced.ok) {
           setUser(mapUser(firebaseUser));
           lastSessionSyncRef.current = Date.now();
         } else {
@@ -107,7 +123,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (now - lastSessionSyncRef.current < 5 * 60_000) return;
       const token = await firebaseUser.getIdToken();
       const synced = await syncSession(token);
-      if (synced) lastSessionSyncRef.current = now;
+      if (synced.ok) lastSessionSyncRef.current = now;
     });
 
     return () => {

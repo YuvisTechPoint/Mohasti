@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import {
   getAdminAuth,
+  getAdminInitError,
   isFirebaseAdminConfigured,
   SESSION_COOKIE_NAME,
   SESSION_MAX_AGE_MS,
@@ -17,7 +18,16 @@ export async function POST(request: Request) {
 
   const auth = getAdminAuth();
   if (!auth) {
-    return NextResponse.json({ error: "Auth unavailable." }, { status: 503 });
+    const initError = getAdminInitError();
+    return NextResponse.json(
+      {
+        error: initError
+          ? "Firebase Admin credentials are invalid."
+          : "Auth unavailable.",
+        detail: initError ?? undefined,
+      },
+      { status: 503 },
+    );
   }
 
   try {
