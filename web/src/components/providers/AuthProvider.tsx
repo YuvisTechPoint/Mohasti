@@ -81,10 +81,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const lastSessionSyncRef = useRef(0);
 
   useEffect(() => {
-    if (!configured) {
-      setLoading(false);
-      return;
-    }
+    if (!configured) return;
 
     const auth = getFirebaseAuth();
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {

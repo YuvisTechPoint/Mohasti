@@ -37,13 +37,6 @@ export const metadata: Metadata = {
   },
   description:
     "Mohasti creates original art, postcards, journals, and mindful stationery inspired by stillness and everyday rituals.",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
-    ],
-    apple: "/apple-icon.png",
-  },
   openGraph: {
     title: "Mohasti | Spiritual Art & Stationery",
     description:

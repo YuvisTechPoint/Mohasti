@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import type { Product } from "@/types";
 import { useCart } from "@/components/providers/CartProvider";
 import { ProductCard } from "@/components/product/ProductCard";

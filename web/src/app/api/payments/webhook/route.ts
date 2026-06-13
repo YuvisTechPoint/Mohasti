@@ -56,7 +56,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Incomplete payment data." }, { status: 400 });
   }
 
-  let orderId = receipt ?? null;
+  const orderId = receipt ?? null;
   if (!orderId) {
     return NextResponse.json({ received: true, skipped: "no_receipt" });
   }

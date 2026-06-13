@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCart } from "@/components/providers/CartProvider";
 import { AccountMenu } from "@/components/auth/AccountMenu";
 import { HeaderSearch } from "@/components/layout/HeaderSearch";
@@ -42,10 +42,12 @@ export function Header() {
   const pathname = usePathname();
   const { itemCount, openCart, isHydrated } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  useEffect(() => {
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   return (
     <header className="site-header glass-header sticky top-0 z-40 print:hidden">

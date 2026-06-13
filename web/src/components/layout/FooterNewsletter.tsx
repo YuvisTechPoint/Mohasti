@@ -1,18 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function FooterNewsletter() {
-  const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
   const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -35,17 +30,6 @@ export function FooterNewsletter() {
         err instanceof Error ? err.message : "Subscription failed.",
       );
     }
-  }
-
-  if (!mounted) {
-    return (
-      <div className="space-y-2" aria-hidden>
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <div className="min-h-[42px] min-w-0 flex-1 rounded-full border border-white/15 bg-white/10" />
-          <div className="h-[42px] w-[7.5rem] shrink-0 rounded-lg bg-mohasti-cyan/40" />
-        </div>
-      </div>
-    );
   }
 
   if (status === "success") {
