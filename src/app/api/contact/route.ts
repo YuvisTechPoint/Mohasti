@@ -11,7 +11,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const db = getAdminDb();
+    const db = await getAdminDb();
     if (!db) {
       return NextResponse.json(
         { error: requireFirebaseAdminMessage() },

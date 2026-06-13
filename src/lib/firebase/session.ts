@@ -14,7 +14,7 @@ export type SessionUser = {
 export async function getSessionUser(): Promise<SessionUser | null> {
   if (!isFirebaseAdminConfigured()) return null;
 
-  const auth = getAdminAuth();
+  const auth = await getAdminAuth();
   if (!auth) return null;
 
   const cookieStore = await cookies();

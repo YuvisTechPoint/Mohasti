@@ -8,6 +8,8 @@ import {
 } from "@/lib/firebase/admin";
 import { linkGuestOrdersToUser } from "@/lib/orders";
 
+export const runtime = "nodejs";
+
 export async function POST(request: Request) {
   if (!isFirebaseAdminConfigured()) {
     return NextResponse.json(
@@ -16,7 +18,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const auth = getAdminAuth();
+  const auth = await getAdminAuth();
   if (!auth) {
     const initError = getAdminInitError();
     return NextResponse.json(

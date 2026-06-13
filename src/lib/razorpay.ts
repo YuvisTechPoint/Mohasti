@@ -1,33 +1,25 @@
-import Razorpay from "razorpay";
 import crypto from "crypto";
+import {
+  getPublicKey,
+  isRazorpayConfigured,
+} from "@/lib/razorpay-config";
 
-export function isRazorpayConfigured(): boolean {
-  return Boolean(
-    process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET,
-  );
-}
+export { getPublicKey, isRazorpayConfigured };
 
-export function getRazorpayInstance(): Razorpay | null {
+export async function getRazorpayInstance() {
   if (!isRazorpayConfigured()) return null;
+  const Razorpay = (await import("razorpay")).default;
   return new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID!,
     key_secret: process.env.RAZORPAY_KEY_SECRET!,
   });
 }
 
-export function getPublicKey(): string | null {
-  return (
-    process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ??
-    process.env.RAZORPAY_KEY_ID ??
-    null
-  );
-}
-
 export async function createRazorpayOrder(
   amountInr: number,
   receipt: string,
 ): Promise<{ id: string; amount: number; currency: string } | null> {
-  const razorpay = getRazorpayInstance();
+  const razorpay = await getRazorpayInstance();
   if (!razorpay) return null;
 
   const order = await razorpay.orders.create({

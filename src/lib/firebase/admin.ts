@@ -1,53 +1,50 @@
-import { cert, getApps, initializeApp, type App } from "firebase-admin/app";
-import { getAuth } from "firebase-admin/auth";
-import { getFirestore, type Firestore } from "firebase-admin/firestore";
+import type { App } from "firebase-admin/app";
+import type { Auth } from "firebase-admin/auth";
+import type { Firestore } from "firebase-admin/firestore";
 import {
   SESSION_COOKIE_NAME,
   SESSION_MAX_AGE_MS,
 } from "@/lib/firebase/constants";
+import {
+  isFirebaseAdminConfigured,
+  normalizePrivateKey,
+} from "@/lib/firebase/admin-config";
 
 export { SESSION_COOKIE_NAME, SESSION_MAX_AGE_MS };
-
-function normalizePrivateKey(key: string): string {
-  let normalized = key.trim();
-  if (
-    (normalized.startsWith('"') && normalized.endsWith('"')) ||
-    (normalized.startsWith("'") && normalized.endsWith("'"))
-  ) {
-    normalized = normalized.slice(1, -1);
-  }
-  return normalized.replace(/\\n/g, "\n");
-}
-
-export function isFirebaseAdminConfigured(): boolean {
-  return Boolean(
-    process.env.FIREBASE_PROJECT_ID?.trim() &&
-      process.env.FIREBASE_CLIENT_EMAIL?.trim() &&
-      process.env.FIREBASE_PRIVATE_KEY?.trim(),
-  );
-}
+export { isFirebaseAdminConfigured } from "@/lib/firebase/admin-config";
 
 let adminInitError: string | null = null;
+let adminApp: App | null = null;
+let adminAppReady = false;
 
-export function getAdminApp(): App | null {
+async function ensureAdminApp(): Promise<App | null> {
   if (!isFirebaseAdminConfigured()) return null;
-
   if (adminInitError) return null;
-
-  if (getApps().length) return getApps()[0]!;
+  if (adminAppReady) return adminApp;
 
   try {
-    return initializeApp({
-      credential: cert({
-        projectId: process.env.FIREBASE_PROJECT_ID!.trim(),
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL!.trim(),
-        privateKey: normalizePrivateKey(process.env.FIREBASE_PRIVATE_KEY!),
-      }),
-    });
+    const { cert, getApps, initializeApp } = await import("firebase-admin/app");
+
+    if (getApps().length) {
+      adminApp = getApps()[0]!;
+    } else {
+      adminApp = initializeApp({
+        credential: cert({
+          projectId: process.env.FIREBASE_PROJECT_ID!.trim(),
+          clientEmail: process.env.FIREBASE_CLIENT_EMAIL!.trim(),
+          privateKey: normalizePrivateKey(process.env.FIREBASE_PRIVATE_KEY!),
+        }),
+      });
+    }
+
+    adminAppReady = true;
+    return adminApp;
   } catch (err) {
     adminInitError =
       err instanceof Error ? err.message : "Firebase Admin initialization failed";
     console.error("Firebase Admin init error:", err);
+    adminAppReady = true;
+    adminApp = null;
     return null;
   }
 }
@@ -56,20 +53,22 @@ export function getAdminInitError(): string | null {
   return adminInitError;
 }
 
-export function getAdminAuth() {
-  const app = getAdminApp();
+export async function getAdminAuth(): Promise<Auth | null> {
+  const app = await ensureAdminApp();
   if (!app) return null;
+  const { getAuth } = await import("firebase-admin/auth");
   return getAuth(app);
 }
 
 let cachedDb: Firestore | null = null;
 
-export function getAdminDb(): Firestore | null {
+export async function getAdminDb(): Promise<Firestore | null> {
   if (cachedDb) return cachedDb;
 
-  const app = getAdminApp();
+  const app = await ensureAdminApp();
   if (!app) return null;
 
+  const { getFirestore } = await import("firebase-admin/firestore");
   const db = getFirestore(app);
   try {
     db.settings({ ignoreUndefinedProperties: true });

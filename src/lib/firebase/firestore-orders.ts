@@ -5,7 +5,7 @@ import { stripUndefined } from "@/lib/firebase/firestore-utils";
 const ORDERS_COLLECTION = "orders";
 
 export async function saveOrderToFirestore(order: Order): Promise<boolean> {
-  const db = getAdminDb();
+  const db = await getAdminDb();
   if (!db || !isFirebaseAdminConfigured()) return false;
 
   await db
@@ -16,7 +16,7 @@ export async function saveOrderToFirestore(order: Order): Promise<boolean> {
 }
 
 export async function getOrderFromFirestore(id: string): Promise<Order | null> {
-  const db = getAdminDb();
+  const db = await getAdminDb();
   if (!db || !isFirebaseAdminConfigured()) return null;
 
   const snap = await db.collection(ORDERS_COLLECTION).doc(id).get();
@@ -25,7 +25,7 @@ export async function getOrderFromFirestore(id: string): Promise<Order | null> {
 }
 
 export async function getOrdersByUserId(uid: string): Promise<Order[]> {
-  const db = getAdminDb();
+  const db = await getAdminDb();
   if (!db || !isFirebaseAdminConfigured()) return [];
 
   const snap = await db
@@ -43,7 +43,7 @@ export async function attachUserToOrder(
   orderId: string,
   userId: string,
 ): Promise<void> {
-  const db = getAdminDb();
+  const db = await getAdminDb();
   if (!db || !isFirebaseAdminConfigured()) return;
 
   await db.collection(ORDERS_COLLECTION).doc(orderId).set(
@@ -56,7 +56,7 @@ export async function linkGuestOrdersByEmail(
   userId: string,
   email: string,
 ): Promise<number> {
-  const db = getAdminDb();
+  const db = await getAdminDb();
   if (!db || !isFirebaseAdminConfigured()) return 0;
 
   const shippingEmail = email.trim().toLowerCase();

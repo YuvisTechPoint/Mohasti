@@ -5,7 +5,7 @@ import { SESSION_COOKIE_NAME } from "@/lib/firebase/constants";
 const PROTECTED_PREFIXES = ["/account"];
 const PUBLIC_ACCOUNT_PATHS = ["/account/login"];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const isProtected = PROTECTED_PREFIXES.some(
