@@ -24,9 +24,9 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Deploy to Vercel
 
 1. Import this repository on [vercel.com](https://vercel.com).
-2. Set **Root Directory** to `web`.
+2. **Root Directory** is set automatically via root `vercel.json` (`web`). If you configure the project manually, use `web` as the root directory.
 3. Add environment variables from `web/.env.example` (see below).
-4. Deploy — Vercel runs `npm run build` automatically.
+4. Deploy — Vercel runs `npm run build` inside `web/`.
 
 ### Required production environment variables
 
