@@ -14,14 +14,14 @@ export type SessionUser = {
 export async function getSessionUser(): Promise<SessionUser | null> {
   if (!isFirebaseAdminConfigured()) return null;
 
-  const auth = await getAdminAuth();
-  if (!auth) return null;
-
-  const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get(SESSION_COOKIE_NAME)?.value;
-  if (!sessionCookie) return null;
-
   try {
+    const auth = await getAdminAuth();
+    if (!auth) return null;
+
+    const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get(SESSION_COOKIE_NAME)?.value;
+    if (!sessionCookie) return null;
+
     const decoded = await auth.verifySessionCookie(sessionCookie, true);
     return {
       uid: decoded.uid,

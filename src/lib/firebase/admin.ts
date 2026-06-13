@@ -56,8 +56,16 @@ export function getAdminInitError(): string | null {
 export async function getAdminAuth(): Promise<Auth | null> {
   const app = await ensureAdminApp();
   if (!app) return null;
-  const { getAuth } = await import("firebase-admin/auth");
-  return getAuth(app);
+
+  try {
+    const { getAuth } = await import("firebase-admin/auth");
+    return getAuth(app);
+  } catch (err) {
+    adminInitError =
+      err instanceof Error ? err.message : "Firebase Auth module failed to load";
+    console.error("Firebase Auth load error:", err);
+    return null;
+  }
 }
 
 let cachedDb: Firestore | null = null;
@@ -68,14 +76,21 @@ export async function getAdminDb(): Promise<Firestore | null> {
   const app = await ensureAdminApp();
   if (!app) return null;
 
-  const { getFirestore } = await import("firebase-admin/firestore");
-  const db = getFirestore(app);
   try {
-    db.settings({ ignoreUndefinedProperties: true });
-  } catch {
-    // Firestore may already be initialized (dev HMR or prior use).
-  }
+    const { getFirestore } = await import("firebase-admin/firestore");
+    const db = getFirestore(app);
+    try {
+      db.settings({ ignoreUndefinedProperties: true });
+    } catch {
+      // Firestore may already be initialized (dev HMR or prior use).
+    }
 
-  cachedDb = db;
-  return db;
+    cachedDb = db;
+    return db;
+  } catch (err) {
+    adminInitError =
+      err instanceof Error ? err.message : "Firestore module failed to load";
+    console.error("Firestore load error:", err);
+    return null;
+  }
 }

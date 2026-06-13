@@ -18,21 +18,21 @@ export async function POST(request: Request) {
     );
   }
 
-  const auth = await getAdminAuth();
-  if (!auth) {
-    const initError = getAdminInitError();
-    return NextResponse.json(
-      {
-        error: initError
-          ? "Firebase Admin credentials are invalid."
-          : "Auth unavailable.",
-        detail: initError ?? undefined,
-      },
-      { status: 503 },
-    );
-  }
-
   try {
+    const auth = await getAdminAuth();
+    if (!auth) {
+      const initError = getAdminInitError();
+      return NextResponse.json(
+        {
+          error: initError
+            ? "Firebase Admin credentials are invalid."
+            : "Auth unavailable.",
+          detail: initError ?? undefined,
+        },
+        { status: 503 },
+      );
+    }
+
     const { idToken } = await request.json();
     if (!idToken) {
       return NextResponse.json({ error: "Missing idToken." }, { status: 400 });
