@@ -2,18 +2,9 @@
 
 Spiritual art & mindful stationery — e-commerce storefront built with Next.js.
 
-## Repository layout
-
-| Path | Description |
-|------|-------------|
-| `web/` | Next.js 16 application (deploy this directory) |
-| `images/` | Source brand & product image assets |
-| `Mohasti Logo.jpeg` | Official brand logo |
-
 ## Quick start
 
 ```bash
-cd web
 npm install
 cp .env.example .env.local   # add Firebase + Razorpay keys
 npm run dev
@@ -24,9 +15,9 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Deploy to Vercel
 
 1. Import this repository on [vercel.com](https://vercel.com).
-2. **Root Directory** is set automatically via root `vercel.json` (`web`). If you configure the project manually, use `web` as the root directory.
-3. Add environment variables from `web/.env.example` (see below).
-4. Deploy — Vercel runs `npm run build` inside `web/`.
+2. Framework should auto-detect as **Next.js** (app lives at the repository root).
+3. Add environment variables from `.env.example`.
+4. Deploy.
 
 ### Required production environment variables
 
@@ -39,16 +30,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Without Razorpay keys the site runs in **demo payment mode**. Without Firebase Admin, **orders cannot be saved in production**.
 
-### Firebase setup
+## Repository layout
 
-- Enable Google sign-in in Firebase Console.
-- Add your production domain to **Authorized domains**.
-- For `FIREBASE_PRIVATE_KEY`, paste the full key with `\n` for newlines (Vercel supports multiline values).
+| Path | Description |
+|------|-------------|
+| `src/` | Next.js application source |
+| `public/` | Static assets, favicons, product images |
+| `images/` | Source brand & product image assets |
 
 ## Scripts
 
 ```bash
-cd web
 npm run dev      # development
 npm run build    # production build
 npm run start    # serve production build
