@@ -32,7 +32,12 @@ export async function POST(request: Request) {
     });
 
     if (decoded.email) {
-      await linkGuestOrdersToUser(decoded.uid, decoded.email);
+      try {
+        await linkGuestOrdersToUser(decoded.uid, decoded.email);
+      } catch (linkErr) {
+        // Don't block sign-in if Firestore isn't ready or order linking fails.
+        console.error("Guest order link skipped:", linkErr);
+      }
     }
 
     const response = NextResponse.json({ success: true });

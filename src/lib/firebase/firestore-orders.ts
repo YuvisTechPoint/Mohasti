@@ -62,29 +62,34 @@ export async function linkGuestOrdersByEmail(
   const shippingEmail = email.trim().toLowerCase();
   if (!shippingEmail) return 0;
 
-  const snap = await db
-    .collection(ORDERS_COLLECTION)
-    .where("shippingEmail", "==", shippingEmail)
-    .limit(50)
-    .get();
+  try {
+    const snap = await db
+      .collection(ORDERS_COLLECTION)
+      .where("shippingEmail", "==", shippingEmail)
+      .limit(50)
+      .get();
 
-  if (snap.empty) return 0;
+    if (snap.empty) return 0;
 
-  const batch = db.batch();
-  let linked = 0;
+    const batch = db.batch();
+    let linked = 0;
 
-  for (const doc of snap.docs) {
-    const data = doc.data() as Order;
-    if (!data.userId) {
-      batch.set(
-        doc.ref,
-        { userId, updatedAt: new Date().toISOString() },
-        { merge: true },
-      );
-      linked += 1;
+    for (const doc of snap.docs) {
+      const data = doc.data() as Order;
+      if (!data.userId) {
+        batch.set(
+          doc.ref,
+          { userId, updatedAt: new Date().toISOString() },
+          { merge: true },
+        );
+        linked += 1;
+      }
     }
-  }
 
-  if (linked > 0) await batch.commit();
-  return linked;
+    if (linked > 0) await batch.commit();
+    return linked;
+  } catch (err) {
+    console.error("linkGuestOrdersByEmail failed:", err);
+    return 0;
+  }
 }

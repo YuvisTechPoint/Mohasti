@@ -34,10 +34,18 @@ Without Razorpay keys the site runs in **demo payment mode**. Without Firebase A
 
 If Google sign-in fails on Vercel with `auth/unauthorized-domain`, add your live domain in Firebase:
 
-1. Open [Firebase Console → Authentication → Settings](https://console.firebase.google.com/project/vibe-music-90bb5/authentication/settings) (project `vibe-music-90bb5`).
+1. Open [Firebase Console → Authentication → Settings](https://console.firebase.google.com/project/mohasti/authentication/settings) (project `mohasti`).
 2. Under **Authorized domains**, click **Add domain**.
 3. Add `mohasti.vercel.app` (and `mohasti.com` when your custom domain is live).
 4. Save, then retry sign-in (no redeploy needed).
+
+### Firebase Firestore (orders)
+
+Enable Firestore for project `mohasti` before testing checkout/orders:
+
+1. [Create Firestore database](https://console.firebase.google.com/project/mohasti/firestore) (production mode).
+2. If prompted, enable the [Firestore API](https://console.developers.google.com/apis/api/firestore.googleapis.com/overview?project=mohasti).
+3. Deploy `firestore.rules` from this repo.
 
 Ensure the same `NEXT_PUBLIC_FIREBASE_*` and `FIREBASE_*` variables from `.env.local` are set on Vercel.
 
