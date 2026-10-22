@@ -113,7 +113,7 @@ function SearchForm({ defaultQuery }: { defaultQuery: string }) {
         name="q"
         defaultValue={defaultQuery}
         placeholder="Search products, collections, journal..."
-        className="flex-1 rounded-full border border-gray-300 px-5 py-3 font-body outline-none focus:border-mohasti-teal focus:ring-2 focus:ring-[#FFDE59]/50"
+        className="flex-1 rounded-full border border-gray-300 px-5 py-3 font-body outline-none focus:border-mohasti-teal focus:ring-2 focus:ring-[#fdfd96]/70"
       />
       <button
         type="submit"

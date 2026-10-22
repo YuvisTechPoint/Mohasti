@@ -153,7 +153,7 @@ export function PaymentMethodOptions({
           </div>
         </>
       ) : (
-        <div className="rounded-xl border border-[#FFDE59]/60 bg-[#FFDE59]/15 p-4 text-sm text-[#0f5c60]">
+        <div className="rounded-xl border border-[#fdfd96]/80 bg-[#fdfd96]/25 p-4 text-sm text-[#0f5c60]">
           <p className="font-medium">Pay when your order is delivered</p>
           <p className="mt-1.5 leading-relaxed text-[#0f5c60]/80">
             Keep the exact order amount ready in cash. Our delivery partner will

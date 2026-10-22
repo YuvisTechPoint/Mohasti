@@ -55,7 +55,7 @@ export function CartDrawer() {
         className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-white shadow-2xl animate-slide-in print:hidden"
         aria-label="Shopping cart"
       >
-        <div className="flex items-center justify-between border-b border-mohasti-teal/8 bg-gradient-to-r from-mohasti-teal/[0.04] to-[#FFDE59]/20 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-mohasti-teal/8 bg-gradient-to-r from-mohasti-teal/[0.04] to-[#fdfd96]/25 px-6 py-4">
           <div>
             <h2 className="font-display text-xl text-mohasti-teal-dark">Your Cart</h2>
             {items.length > 0 && (
@@ -198,7 +198,7 @@ export function CartDrawer() {
             <Link
               href="/checkout"
               onClick={closeCart}
-              className="flex w-full items-center justify-center rounded-lg bg-[#FFDE59] px-6 py-2.5 font-body text-sm font-semibold text-[#0f5c60] transition-opacity hover:opacity-90"
+              className="flex w-full items-center justify-center rounded-lg bg-[#fdfd96] px-6 py-2.5 font-body text-sm font-semibold text-[#0f5c60] transition-opacity hover:opacity-90"
             >
               Checkout
             </Link>
@@ -226,7 +226,7 @@ function CartShippingProgress({
   qualified: boolean;
 }) {
   return (
-    <div className="rounded-xl border border-[#FFDE59]/40 bg-[#FFDE59]/15 px-4 py-3">
+    <div className="rounded-xl border border-[#fdfd96]/60 bg-[#fdfd96]/20 px-4 py-3">
       {qualified ? (
         <p className="font-body text-xs font-medium text-[#0f5c60]">
           You unlocked <strong>free shipping</strong> on this order.
@@ -239,7 +239,7 @@ function CartShippingProgress({
       )}
       <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-white/70">
         <div
-          className="h-full rounded-full bg-[#FFDE59] transition-all duration-500"
+          className="h-full rounded-full bg-[#fdfd96] transition-all duration-500"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -278,7 +278,7 @@ function CartPerksStrip() {
             className="flex items-start gap-3 rounded-lg border border-mohasti-teal/8 bg-white px-3 py-2.5"
           >
             <span
-              className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#FFDE59] ring-2 ring-[#FFDE59]/30"
+              className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#fdfd96] ring-2 ring-[#fdfd96]/50"
               aria-hidden
             />
             <span>
@@ -356,7 +356,7 @@ function CartRecommendations({
                 <button
                   type="button"
                   onClick={() => onAdd(product)}
-                  className="min-h-9 rounded-lg bg-[#FFDE59] px-3 py-2 font-body text-xs font-bold uppercase tracking-wide text-[#0f5c60] transition-opacity hover:opacity-90"
+                  className="min-h-9 rounded-lg bg-[#fdfd96] px-3 py-2 font-body text-xs font-bold uppercase tracking-wide text-[#0f5c60] transition-opacity hover:opacity-90"
                 >
                   Add
                 </button>
@@ -389,14 +389,14 @@ function CartEmptyState({
 
   return (
     <div className="py-4">
-      <div className="rounded-2xl border border-mohasti-teal/10 bg-gradient-to-br from-mohasti-teal/[0.04] to-[#FFDE59]/25 px-5 py-8 text-center">
+      <div className="rounded-2xl border border-mohasti-teal/10 bg-gradient-to-br from-mohasti-teal/[0.04] to-[#fdfd96]/30 px-5 py-8 text-center">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-mohasti-teal/10">
           <Image
-            src="/brand/mohasti-logo.svg"
-            alt=""
+            src="/brand/mohasti-logo.png"
+            alt="Mohasti"
             width={40}
             height={40}
-            className="h-10 w-10 rounded-lg object-cover"
+            className="h-10 w-10 rounded-xl object-cover"
           />
         </div>
         <h3 className="font-display text-2xl text-mohasti-teal-dark">
@@ -445,7 +445,7 @@ function CartEmptyState({
                 <button
                   type="button"
                   onClick={() => onAdd(product)}
-                  className="shrink-0 rounded-lg bg-[#FFDE59] px-3 py-1.5 font-body text-xs font-bold text-[#0f5c60]"
+                  className="shrink-0 rounded-lg bg-[#fdfd96] px-3 py-1.5 font-body text-xs font-bold text-[#0f5c60]"
                 >
                   Add
                 </button>

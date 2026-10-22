@@ -8,7 +8,7 @@ export default function NotFound() {
         className="mb-8 h-32 w-32 rounded-full opacity-80"
         style={{
           background:
-            "linear-gradient(135deg, #0CC0DF 0%, #7DD956 35%, #FFDE59 100%)",
+            "linear-gradient(135deg, #0CC0DF 0%, #7DD956 35%, #fdfd96 100%)",
         }}
         aria-hidden
       />

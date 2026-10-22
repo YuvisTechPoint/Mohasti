@@ -3,7 +3,7 @@ export const INVOICE_BRAND = {
   teal: "#1A8A8F",
   tealDark: "#0f5c60",
   cyan: "#0CC0DF",
-  yellow: "#FFDE59",
+  yellow: "#fdfd96",
   gold: "#c9a227",
 } as const;
 

@@ -272,7 +272,7 @@ export function HeaderSearch() {
                       <button
                         type="button"
                         onClick={() => submitSearch(query)}
-                        className="mt-5 rounded-lg bg-[#FFDE59] px-5 py-2 font-body text-sm font-semibold text-[#0f5c60] transition-opacity hover:opacity-90"
+                        className="mt-5 rounded-lg bg-[#fdfd96] px-5 py-2 font-body text-sm font-semibold text-[#0f5c60] transition-opacity hover:opacity-90"
                       >
                         Search all products
                       </button>
@@ -366,7 +366,7 @@ function SearchEmptySuggestions({ onPick }: { onPick: (query: string) => void })
         ))}
       </div>
 
-      <div className="mt-6 rounded-xl border border-mohasti-teal/8 bg-[#FFDE59]/12 px-4 py-4">
+      <div className="mt-6 rounded-xl border border-mohasti-teal/8 bg-[#fdfd96]/25 px-4 py-4">
         <p className="font-body text-xs font-semibold uppercase tracking-[0.12em] text-mohasti-teal/55">
           Tip
         </p>
@@ -413,7 +413,7 @@ function SearchResultGroup({
                 className={cn(
                   "search-result-row flex w-full items-center gap-3 rounded-xl px-2 py-2.5 text-left transition-colors md:px-3",
                   isActive
-                    ? "search-result-row--active bg-[#FFDE59]/30 ring-1 ring-[#FFDE59]/50"
+                    ? "search-result-row--active bg-[#fdfd96]/45 ring-1 ring-[#fdfd96]"
                     : "hover:bg-mohasti-teal/[0.04]",
                 )}
               >
@@ -434,7 +434,7 @@ function SearchResultGroup({
                       item.type === "collection" &&
                         "bg-mohasti-teal/10 text-mohasti-teal-dark",
                       item.type === "journal" &&
-                        "bg-[#FFDE59] text-[#0f5c60]",
+                        "bg-[#fdfd96] text-[#0f5c60]",
                     )}
                   >
                     {item.type === "collection" ? "Shop" : "Read"}

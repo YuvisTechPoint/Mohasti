@@ -57,7 +57,7 @@ Create favicon from the gold heart + moon mark. Use full logo in header/footer; 
 | Token | Hex | Usage |
 |-------|-----|-------|
 | `--mohasti-cyan` | `#0CC0DF` | Primary accent, links, CTAs, gradient start |
-| `--mohasti-yellow` | `#FFDE59` | Secondary accent, highlights, gradient end |
+| `--mohasti-yellow` | `#fdfd96` | Secondary accent, highlights, gradient end (pastel yellow) |
 | `--mohasti-teal` | `#1A8A8F` | Headings, wordmark color, primary text on light bg |
 | `--mohasti-teal-dark` | `#0F5C60` | Body text, nav links, footer text |
 | `--mohasti-gold` | `#C9A227` | Icons, borders, decorative line art, premium badges |
@@ -81,13 +81,13 @@ Create favicon from the gold heart + moon mark. Use full logo in header/footer; 
 
 **Primary Hero Gradient** (matches logo background):
 ```css
-background: linear-gradient(135deg, #0CC0DF 0%, #7DD956 35%, #FFDE59 100%);
+background: linear-gradient(135deg, #0CC0DF 0%, #7DD956 35%, #fdfd96 100%);
 ```
 Direction: top-left (cyan) → center (soft lime) → bottom-right (yellow)
 
 **Soft Section Gradient** (for newsletter, CTA bands):
 ```css
-background: linear-gradient(160deg, rgba(12, 192, 223, 0.12) 0%, rgba(255, 222, 89, 0.18) 100%);
+background: linear-gradient(160deg, rgba(12, 192, 223, 0.12) 0%, rgba(253, 253, 150, 0.25) 100%);
 ```
 
 **Gold Shimmer** (decorative only, buttons/badges):
@@ -445,7 +445,7 @@ Deliver and organize:
 
 The build is complete when:
 1. Homepage matches section order and commerce flow of reference sites
-2. Color system uses exact hex values `#0CC0DF` and `#FFDE59` in hero gradient
+2. Color system uses exact hex values `#0CC0DF` and `#fdfd96` in hero gradient
 3. All Mohasti logo elements appear correctly in header/footer
 4. Product grid, cart, and checkout work end-to-end
 5. Newsletter signup captures email and applies welcome discount
@@ -460,9 +460,9 @@ Build the entire site now. Start with design tokens + component library, then pa
 ## QUICK REFERENCE — COLOR PALETTE SWATCH
 
 ```
-PRIMARY GRADIENT:  #0CC0DF ──→ #7DD956 ──→ #FFDE59
+PRIMARY GRADIENT:  #0CC0DF ──→ #7DD956 ──→ #fdfd96
 ACCENT CYAN:       #0CC0DF
-ACCENT YELLOW:     #FFDE59
+ACCENT YELLOW:     #fdfd96
 TEAL TEXT:         #1A8A8F / #0F5C60
 GOLD DECOR:        #C9A227
 LOTUS BLUE:        #1E6FD9

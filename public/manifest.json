@@ -1,0 +1,27 @@
+{
+  "name": "Mohasti — Spiritual Art & Mindful Stationery",
+  "short_name": "Mohasti",
+  "description": "Mohasti creates original art, postcards, journals, and mindful stationery inspired by stillness and everyday rituals.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0EC0DE",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/brand/mohasti-logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

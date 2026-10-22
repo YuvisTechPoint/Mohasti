@@ -80,11 +80,11 @@ export function Hero() {
               aria-hidden
             />
             <Image
-              src="/brand/mohasti-logo.svg"
+              src="/brand/mohasti-logo.png"
               alt="Mohasti brand — lotus, heart, and moon"
-              width={380}
-              height={480}
-              className="relative w-full rounded-2xl shadow-[var(--shadow-card)]"
+              width={400}
+              height={400}
+              className="relative w-full aspect-square rounded-2xl object-cover shadow-[var(--shadow-card)] ring-1 ring-mohasti-teal/10"
               priority
             />
           </div>

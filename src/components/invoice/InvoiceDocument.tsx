@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import type { Order } from "@/types";
 import { formatPrice } from "@/lib/format";
@@ -23,18 +24,27 @@ export function InvoiceDocument({ order }: { order: Order }) {
       {/* Header */}
       <header className="border-b border-neutral-200 px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-          <div className="min-w-0">
-            <p className="font-display text-lg font-semibold tracking-tight text-[#1A8A8F] sm:text-xl">
-              {INVOICE_SELLER.name}
-            </p>
-            <p className="text-xs text-neutral-500">{INVOICE_SELLER.tagline}</p>
-            <p className="mt-2 space-y-0.5 text-xs text-neutral-600 sm:space-y-0">
-              <span className="block break-all text-[#0f5c60] sm:inline">
-                {INVOICE_SELLER.email}
-              </span>
-              <span className="hidden sm:inline"> · </span>
-              <span className="block sm:inline">{INVOICE_SELLER.phone}</span>
-            </p>
+          <div className="flex items-start gap-3.5 min-w-0">
+            <Image
+              src="/brand/mohasti-logo.png"
+              alt="Mohasti"
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0 rounded-lg object-cover ring-1 ring-neutral-200"
+            />
+            <div className="min-w-0">
+              <p className="font-display text-lg font-semibold tracking-tight text-[#1A8A8F] sm:text-xl">
+                {INVOICE_SELLER.name}
+              </p>
+              <p className="text-xs text-neutral-500">{INVOICE_SELLER.tagline}</p>
+              <p className="mt-2 space-y-0.5 text-xs text-neutral-600 sm:space-y-0">
+                <span className="block break-all text-[#0f5c60] sm:inline">
+                  {INVOICE_SELLER.email}
+                </span>
+                <span className="hidden sm:inline"> · </span>
+                <span className="block sm:inline">{INVOICE_SELLER.phone}</span>
+              </p>
+            </div>
           </div>
           <div className="text-left sm:text-right">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#1A8A8F]">
@@ -275,7 +285,7 @@ function StatusPill({
     tone === "paid"
       ? "bg-emerald-100 text-emerald-800"
       : tone === "cod"
-        ? "bg-[#FFDE59] text-[#0f5c60]"
+        ? "bg-[#fdfd96] text-[#0f5c60]"
         : "bg-amber-100 text-amber-800";
 
   return (

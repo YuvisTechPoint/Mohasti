@@ -60,7 +60,7 @@ export function NewLaunches() {
 
               <div className="launch-card-line" aria-hidden />
 
-              <div className="flex items-center justify-between gap-3 bg-[#FFDE59] px-5 py-4">
+              <div className="flex items-center justify-between gap-3 bg-[#fdfd96] px-5 py-4">
                 <h3 className="font-display text-xl font-semibold leading-snug text-[#0f5c60] transition-colors duration-300 group-hover:text-[#1a8a8f]">
                   {item.title}
                 </h3>

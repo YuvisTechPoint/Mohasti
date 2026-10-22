@@ -60,11 +60,11 @@ export function Header() {
           aria-label="Mohasti — home"
         >
           <Image
-            src="/brand/mohasti-logo.svg"
-            alt=""
+            src="/brand/mohasti-logo.png"
+            alt="Mohasti logo"
             width={40}
-            height={50}
-            className="h-9 w-auto shrink-0 rounded-xl object-cover object-top shadow-sm ring-1 ring-mohasti-teal/10 transition-all duration-300 group-hover:shadow-md group-hover:ring-mohasti-teal/20 sm:h-10"
+            height={40}
+            className="h-9 w-9 shrink-0 rounded-xl object-cover shadow-sm ring-1 ring-mohasti-teal/10 transition-all duration-300 group-hover:shadow-md group-hover:ring-mohasti-teal/20 sm:h-10 sm:w-10"
             priority
           />
           <div className="min-w-0 leading-none">
@@ -102,7 +102,7 @@ export function Header() {
           >
             <CartIcon />
             {isHydrated && itemCount > 0 && (
-              <span className="absolute right-0.5 top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-gradient-to-br from-[#fff4b8] via-[#FFDE59] to-[#f0cc3a] px-1 text-[10px] font-bold leading-none text-[#0f5c60] shadow-sm ring-2 ring-white">
+              <span className="absolute right-0.5 top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-gradient-to-br from-[#ffffff] via-[#fdfd96] to-[#f5f585] px-1 text-[10px] font-bold leading-none text-[#0f5c60] shadow-sm ring-2 ring-white">
                 {itemCount}
               </span>
             )}
@@ -182,11 +182,11 @@ function MobileSearchField({ onNavigate }: { onNavigate: () => void }) {
         name="q"
         type="search"
         placeholder="Search..."
-        className="min-w-0 flex-1 rounded-full border border-gray-200 px-4 py-2.5 font-body text-base outline-none focus:border-mohasti-teal focus:ring-2 focus:ring-[#FFDE59]/40"
+        className="min-w-0 flex-1 rounded-full border border-gray-200 px-4 py-2.5 font-body text-base outline-none focus:border-mohasti-teal focus:ring-2 focus:ring-[#fdfd96]/60"
       />
       <button
         type="submit"
-        className="shrink-0 rounded-lg bg-[#FFDE59] px-4 py-2.5 font-body text-sm font-semibold text-[#0f5c60] min-h-11"
+        className="shrink-0 rounded-lg bg-[#fdfd96] px-4 py-2.5 font-body text-sm font-semibold text-[#0f5c60] min-h-11"
       >
         Go
       </button>

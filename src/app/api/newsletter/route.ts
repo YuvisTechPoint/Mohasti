@@ -1,24 +1,8 @@
 import { NextResponse } from "next/server";
 import { getAdminDb, isFirebaseAdminConfigured } from "@/lib/firebase/admin";
-import { requireFirebaseAdminMessage } from "@/lib/env";
 
 export async function POST(request: Request) {
   try {
-    if (!isFirebaseAdminConfigured()) {
-      return NextResponse.json(
-        { error: requireFirebaseAdminMessage() },
-        { status: 503 },
-      );
-    }
-
-    const db = await getAdminDb();
-    if (!db) {
-      return NextResponse.json(
-        { error: requireFirebaseAdminMessage() },
-        { status: 503 },
-      );
-    }
-
     const { email } = await request.json();
     const normalized = String(email ?? "").trim().toLowerCase();
 
@@ -29,11 +13,22 @@ export async function POST(request: Request) {
       );
     }
 
-    await db.collection("newsletter_leads").add({
-      email: normalized,
-      source: "homepage",
-      createdAt: new Date().toISOString(),
-    });
+    if (isFirebaseAdminConfigured()) {
+      try {
+        const db = await getAdminDb();
+        if (db) {
+          await db.collection("newsletter_leads").add({
+            email: normalized,
+            source: "homepage",
+            createdAt: new Date().toISOString(),
+          });
+        }
+      } catch (dbErr) {
+        console.warn("Could not save newsletter lead to Firestore:", dbErr);
+      }
+    } else {
+      console.log("[Newsletter subscription (demo/local)]", normalized);
+    }
 
     return NextResponse.json({
       success: true,

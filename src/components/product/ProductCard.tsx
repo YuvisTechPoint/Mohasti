@@ -117,7 +117,7 @@ export function ProductCard({
             "bottom-[calc(var(--product-card-footer-h)+0.5rem)]",
             "opacity-100 transition-all duration-200 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100",
             tealFooter
-              ? "bg-[#FFDE59] text-[#0f5c60] hover:opacity-90 hover:shadow-[#FFDE59]/40"
+              ? "bg-[#fdfd96] text-[#0f5c60] hover:opacity-90 hover:shadow-[#fdfd96]/40"
               : "bg-mohasti-teal text-white hover:bg-mohasti-cyan hover:shadow-mohasti-cyan/30",
           )}
         >

@@ -72,7 +72,7 @@ export const products: Product[] = [
     care: "Store flat.",
     status: "available",
     image: "/images/golden-hour-glow.png",
-    imageGradient: "linear-gradient(160deg, #FFDE59 0%, #C9A227 50%, #1A8A8F 100%)",
+    imageGradient: "linear-gradient(160deg, #fdfd96 0%, #C9A227 50%, #1A8A8F 100%)",
   },
   {
     handle: "tea-ritual-postcard",
@@ -95,7 +95,7 @@ export const products: Product[] = [
       "Store flat in a dry place. Frame behind glass to preserve colours. Keep away from prolonged direct sunlight.",
     status: "available",
     image: "/images/dining-space.png",
-    imageGradient: "linear-gradient(160deg, #7DD956 0%, #FFDE59 60%, #1A8A8F 100%)",
+    imageGradient: "linear-gradient(160deg, #7DD956 0%, #fdfd96 60%, #1A8A8F 100%)",
     tags: ["Grandmacore", "Limited Deal", "Mohasti Threads"],
     specifications: [
       { label: "Artwork", value: "Tapestry rose · dusty pink & burgundy on sage green" },
@@ -128,7 +128,7 @@ export const products: Product[] = [
     care: "Store in a cool, dry place.",
     status: "available",
     image: "/images/3d-petal-red-bag.png",
-    imageGradient: "linear-gradient(160deg, #FFDE59 0%, #0CC0DF 100%)",
+    imageGradient: "linear-gradient(160deg, #fdfd96 0%, #0CC0DF 100%)",
   },
   {
     handle: "gratitude-greeting-card",
@@ -143,7 +143,7 @@ export const products: Product[] = [
     care: "Store flat.",
     status: "available",
     image: "/images/rose-tapestry.png",
-    imageGradient: "linear-gradient(160deg, #F5C6D8 0%, #FFDE59 100%)",
+    imageGradient: "linear-gradient(160deg, #F5C6D8 0%, #fdfd96 100%)",
   },
   {
     handle: "friendship-light-greeting-card",
@@ -173,7 +173,7 @@ export const products: Product[] = [
     care: "Keep box closed when not in use.",
     status: "available",
     image: "/images/golden-hour-glow.png",
-    imageGradient: "linear-gradient(160deg, #C9A227 0%, #FFDE59 50%, #0CC0DF 100%)",
+    imageGradient: "linear-gradient(160deg, #C9A227 0%, #fdfd96 50%, #0CC0DF 100%)",
   },
   {
     handle: "mindfulness-notebook",
@@ -201,7 +201,7 @@ export const products: Product[] = [
     shipping: "Ships within 3–5 business days.",
     care: "Keep away from moisture.",
     status: "available",
-    imageGradient: "linear-gradient(160deg, #FFDE59 0%, #1A8A8F 100%)",
+    imageGradient: "linear-gradient(160deg, #fdfd96 0%, #1A8A8F 100%)",
   },
   {
     handle: "florals-bookmarks-set",
@@ -243,7 +243,7 @@ export const products: Product[] = [
     shipping: "Pre-orders ship after 4th week of June.",
     care: "Store flat in provided tin.",
     status: "pre_order",
-    imageGradient: "linear-gradient(160deg, #7DD956 0%, #FFDE59 50%, #0CC0DF 100%)",
+    imageGradient: "linear-gradient(160deg, #7DD956 0%, #fdfd96 50%, #0CC0DF 100%)",
   },
   {
     handle: "mindfulness-mail-club",
@@ -259,7 +259,7 @@ export const products: Product[] = [
     care: "N/A",
     status: "available",
     isSubscription: true,
-    imageGradient: "linear-gradient(160deg, #0CC0DF 0%, #FFDE59 100%)",
+    imageGradient: "linear-gradient(160deg, #0CC0DF 0%, #fdfd96 100%)",
   },
 ];
 

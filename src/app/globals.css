@@ -2,7 +2,7 @@
 
 :root {
   --mohasti-cyan: #0cc0df;
-  --mohasti-yellow: #ffde59;
+  --mohasti-yellow: #fdfd96;
   --mohasti-teal: #1a8a8f;
   --mohasti-teal-dark: #0f5c60;
   --mohasti-gold: #c9a227;
@@ -74,7 +74,7 @@ body {
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, #0cc0df 0%, #7dd956 35%, #ffde59 100%);
+  background: linear-gradient(135deg, #0cc0df 0%, #7dd956 35%, #fdfd96 100%);
   animation: hero-shift 20s ease-in-out infinite alternate;
 }
 
@@ -164,7 +164,7 @@ body {
   bottom: 0.15rem;
   height: 2px;
   border-radius: 999px;
-  background: #ffde59;
+  background: #fdfd96;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
@@ -322,8 +322,8 @@ body {
 }
 
 .search-input-shell:focus-within {
-  border-color: #ffde59;
-  box-shadow: 0 0 0 3px rgba(255, 222, 89, 0.35);
+  border-color: #fdfd96;
+  box-shadow: 0 0 0 3px rgba(253, 253, 150, 0.45);
 }
 
 .search-trigger-pill {
@@ -528,8 +528,8 @@ body {
 }
 
 .invoice-highlight-box {
-  background: rgba(255, 222, 89, 0.22);
-  border-left: 3px solid #ffde59;
+  background: rgba(253, 253, 150, 0.3);
+  border-left: 3px solid #fdfd96;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
@@ -548,7 +548,7 @@ body {
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid rgba(201, 162, 39, 0.25);
-  background: #ffde59;
+  background: #fdfd96;
   box-shadow: var(--shadow-soft);
   transition:
     transform 0.35s ease,
@@ -631,7 +631,7 @@ body {
 
 /* Product grid cards — yellow footer (non-postcard / non-greeting) */
 .product-card-footer {
-  background: linear-gradient(180deg, #fff4b8 0%, #ffde59 50%, #f0cc3a 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #fdfd96 50%, #f5f585 100%);
 }
 
 .product-card-inner {

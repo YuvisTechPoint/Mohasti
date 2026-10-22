@@ -46,11 +46,11 @@ export function Footer() {
               aria-label="Mohasti — home"
             >
               <Image
-                src="/brand/mohasti-logo.svg"
-                alt=""
+                src="/brand/mohasti-logo.png"
+                alt="Mohasti logo"
                 width={44}
-                height={55}
-                className="h-11 w-11 rounded-lg object-cover object-top ring-1 ring-white/20 transition-shadow group-hover:ring-white/40"
+                height={44}
+                className="h-11 w-11 rounded-xl object-cover ring-1 ring-white/20 transition-shadow group-hover:ring-white/40"
               />
               <span className="font-display text-2xl font-semibold text-white transition-colors group-hover:text-mohasti-cyan">
                 Mohasti

@@ -13,7 +13,7 @@ export const collections: Collection[] = [
     title: "Greeting Cards",
     description: "Hand-illustrated cards for moments of gratitude, friendship, and self-love.",
     image: "/images/rose-tapestry.png",
-    imageGradient: "linear-gradient(135deg, #FFDE59 0%, #C9A227 100%)",
+    imageGradient: "linear-gradient(135deg, #fdfd96 0%, #C9A227 100%)",
   },
   {
     handle: "notebooks",
@@ -31,13 +31,13 @@ export const collections: Collection[] = [
     handle: "new-arrivals",
     title: "New Arrivals",
     description: "Fresh drops from the Mohasti studio.",
-    imageGradient: "linear-gradient(135deg, #7DD956 0%, #FFDE59 100%)",
+    imageGradient: "linear-gradient(135deg, #7DD956 0%, #fdfd96 100%)",
   },
   {
     handle: "favourites",
     title: "Mohasti Favourites",
     description: "Beloved pieces and limited collections from our circle.",
-    imageGradient: "linear-gradient(135deg, #0CC0DF 0%, #FFDE59 100%)",
+    imageGradient: "linear-gradient(135deg, #0CC0DF 0%, #fdfd96 100%)",
   },
 ];
 

@@ -37,7 +37,36 @@ export const metadata: Metadata = {
   },
   description:
     "Mohasti creates original art, postcards, journals, and mindful stationery inspired by stillness and everyday rituals.",
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
+    title: "Mohasti | Spiritual Art & Stationery",
+    description:
+      "Original art and mindful stationery inspired by stillness and everyday rituals.",
+    url: "https://mohasti.com",
+    siteName: "Mohasti",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/brand/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Mohasti — Spiritual Art & Stationery",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Mohasti | Spiritual Art & Stationery",
     description:
       "Original art and mindful stationery inspired by stillness and everyday rituals.",

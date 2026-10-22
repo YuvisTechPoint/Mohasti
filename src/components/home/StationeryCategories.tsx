@@ -39,7 +39,7 @@ export function StationeryCategories() {
             <Link
               key={cat.title}
               href={`/collections/${cat.handle}`}
-              className="stationery-card group overflow-hidden rounded-2xl bg-[#FFDE59] shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              className="stationery-card group overflow-hidden rounded-2xl bg-[#fdfd96] shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative aspect-square overflow-hidden bg-gray-100">
                 <Image
@@ -50,7 +50,7 @@ export function StationeryCategories() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
               </div>
-              <div className="flex items-center justify-between gap-2 bg-[#FFDE59] px-3 py-3 sm:gap-3 sm:px-4 sm:py-4">
+              <div className="flex items-center justify-between gap-2 bg-[#fdfd96] px-3 py-3 sm:gap-3 sm:px-4 sm:py-4">
                 <h3 className="font-display text-sm font-semibold leading-snug text-[#0f5c60] transition-colors duration-300 group-hover:text-[#1a8a8f] sm:text-base">
                   {cat.title}
                 </h3>
